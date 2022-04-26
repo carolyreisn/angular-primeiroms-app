@@ -2,14 +2,14 @@
   {{mensagem}}
 </div>
 
-<p>
+<p *ngIf="debug == true">
  Status:  {{controles.status}}
 </p>
 
-<p>
+<p *ngIf="debug == true">
   Errors:  {{controles.errors | json}}
  </p>
 
- <p>
+ <p *ngIf="debug == true">
   Touched:  {{controles.touched}}
  </p>

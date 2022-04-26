@@ -1,17 +1,26 @@
 <p>listar works!</p>
 <p>Empresa Filho: {{empresaFilho}} </p>
 
+<div class="row float-end">
+  <button class="btn btn-success" routerLink="/professores/criar">Criar +</button>
+</div>
+
 <table class="table table-striped table-hover">
   <thead>
   <tr>
   <th>ID</th>
   <th>Nome</th>
-  <th>Email</th>
+  <th>Rua</th>
+  <th>Número</th>
+  <th>CEP</th>
   </tr>
   </thead>
   <tr *ngFor="let professor of professores">
     <td> {{professor.id}} </td>
     <td> {{professor.nome}}</td>
-    <td> {{professor.email}}</td>
+    <td> {{professor.rua}}</td>
+    <td> {{professor.numero}}</td>
+    <td> {{professor.cep}}</td>
+
   </tr>
 </table>
