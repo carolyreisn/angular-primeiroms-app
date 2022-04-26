@@ -1,0 +1,15 @@
+<div class="alert alert-danger" *ngIf="controles.status == 'INVALID' && controles.touched == true" role="alert">
+  {{mensagem}}
+</div>
+
+<p>
+ Status:  {{controles.status}}
+</p>
+
+<p>
+  Errors:  {{controles.errors | json}}
+ </p>
+
+ <p>
+  Touched:  {{controles.touched}}
+ </p>
