@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProfessoresGpModel } from '../professores-gp.model';
 import { ProfessoresGpService } from '../professores-gp.service';
 
 @Component({
@@ -9,23 +10,43 @@ import { ProfessoresGpService } from '../professores-gp.service';
 })
 export class ListarGpComponent implements OnInit {
 
-  professoresGp : any = [];
+  professoresGp : Array<ProfessoresGpModel> = [];
 
-  constructor(private route : ActivatedRoute, private professoresGpService : ProfessoresGpService) { }
+  constructor(private activatedRoute : ActivatedRoute, private professoresGpService : ProfessoresGpService, private route :Router) { }
 
   ngOnInit(): void {
 
     this.professoresGpService.getAll().subscribe(
       (data) => {
         console.log(data);
-        this.professoresGp = data;
+        this.professoresGp= data;
       }
     )
 
-    this.route.params.subscribe(
+    this.activatedRoute.params.subscribe(
       (data) =>{
         console.log(data);
 
+      }
+    );
+  }
+
+  onDelete(id :number) {
+    this.professoresGpService.delete(id).subscribe(
+      ()=>{
+        console.log(`Deletou o registro com o ID ${id}`)
+        this.getAll();
+      }
+    );
+  }
+
+  private getAll(){
+
+    this.professoresGpService.getAll()
+    .subscribe(
+      (data) => {
+        console.log(data);
+        this.professoresGp = data;
       }
     );
   }

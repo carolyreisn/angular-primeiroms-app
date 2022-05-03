@@ -12,9 +12,13 @@
   </thead>
 
   <tr *ngFor="let professorGp of professoresGp">
-    <td>{{professorGp.id}}</td>
-    <td>{{professorGp.nome}}</td>
-    <td>{{professorGp.email}}</td>
+    <td>{{professorGp?.id}}</td>
+    <td>{{professorGp?.nome}}</td>
+    <td>{{professorGp?.email}}</td>
+    <td>
+      <button class="btn btn-outline-info" [routerLink]="['/professoresGp/editar',professorGp.id]">Editar</button>
+      <button class="btn btn-outline-danger" (click)="onDelete(professorGp.id!)">Deletar</button>
+    </td>
   </tr>
 
 
